@@ -1,0 +1,149 @@
+{
+  "info": {
+    "name": "Cactus Backend",
+    "_postman_id": "cactus-backend-collection-id",
+    "description": "Colección completa para probar la API REST con OAuth2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Registrar usuario",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"antonio\",\n  \"password\": \"testpass\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/register/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "register", ""]
+        }
+      }
+    },
+    {
+      "name": "Obtener token OAuth2",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/x-www-form-urlencoded" }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            { "key": "grant_type", "value": "password" },
+            { "key": "username", "value": "antonio" },
+            { "key": "password", "value": "testpass" },
+            { "key": "client_id", "value": "<tu_client_id>" },
+            { "key": "client_secret", "value": "<tu_client_secret>" }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8000/o/token/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["o", "token", ""]
+        }
+      }
+    },
+    {
+      "name": "Crear tarea",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Comprar café\",\n  \"description\": \"Asegúrate que sea descafeinado\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/tasks/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "tasks", ""]
+        }
+      }
+    },
+    {
+      "name": "Listar tareas",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/api/tasks/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "tasks", ""]
+        }
+      }
+    },
+    {
+      "name": "Ver detalle tarea",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/api/tasks/1/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "tasks", "1", ""]
+        }
+      }
+    },
+    {
+      "name": "Actualizar tarea",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Leer y tomar notas\",\n  \"description\": \"Agregar notas sobre OAuth2\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/tasks/1/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "tasks", "1", ""]
+        }
+      }
+    },
+    {
+      "name": "Eliminar tarea",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{access_token}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/api/tasks/1/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "tasks", "1", ""]
+        }
+      }
+    }
+  ]
+}
