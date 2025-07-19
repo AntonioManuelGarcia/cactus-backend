@@ -60,15 +60,15 @@ Prueba tecnica basada en un gestor de tareas simple
 
 ```
 taskmanager/
-├── core/			     # App principal del proyecto (registro, configuración)
-├── tasks/			    # App para el CRUD de tareas
-├── pgdata/               # Volumen de datos para el docker de PostgreSQL
-├── backup.sql            # Backup de la base de datos
+├── core/		  	# App principal del proyecto (registro, configuración)
+├── tasks/			# App para el CRUD de tareas
+├── pgdata/               	# Volumen de datos para el docker de PostgreSQL
+├── backup.sql            	# Backup de la base de datos
 ├── docker-compose.yml
-├── settings.env		  # Archivo con las variables de entorno, solo añadido como ejemplo
+├── settings.env		# Archivo con las variables de entorno, solo añadido como ejemplo
 ├── manage.py
 ├── pytest.ini			# Archivo de configuracion de pytest
-├── requirements.txt	  # Archivo de librerias requeridas para el proyecto
+├── requirements.txt	  	# Archivo de librerias requeridas para el proyecto
 ├── Dockerfile
 ├── CactusBackend.postman_collection.json	  # Coleccion de endpoints de la api para postman
 └── ...
